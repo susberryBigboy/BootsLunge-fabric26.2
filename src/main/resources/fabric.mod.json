@@ -4,7 +4,9 @@
   "version": "${version}",
   "name": "Boots Lunge fabric26.2",
   "description": "",
-  "authors": [],
+  "authors": [
+    "Papack Craft"
+  ],
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "icon.png",
