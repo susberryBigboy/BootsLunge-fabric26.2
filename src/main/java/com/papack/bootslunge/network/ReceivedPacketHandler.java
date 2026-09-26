@@ -45,9 +45,10 @@ public class ReceivedPacketHandler {
             }
 
             // Calculation of Thrust
-            double baseStrength = configServer.lungeBaseStrength
+            double adjustment = Math.clamp(payload.adjustment(), 0.1, 1.0);
+            double baseStrength = (configServer.lungeBaseStrength
                     + (level * configServer.lungeLevelMultiplier)
-                    + (currentCount * configServer.lungeCountMultiplier);
+                    + (currentCount * configServer.lungeCountMultiplier)) * adjustment;
 
             Vec3 lungeVelocity;
 
@@ -114,7 +115,7 @@ public class ReceivedPacketHandler {
             }
 
             // Set it so that fall damage behaves similarly to when using Wind Charge
-            player.setIgnoreFallDamageFromCurrentImpulse(true,player.position());
+            player.setIgnoreFallDamageFromCurrentImpulse(true, player.position());
             player.currentImpulseImpactPos = player.position();
             player.resetFallDistance();
 
